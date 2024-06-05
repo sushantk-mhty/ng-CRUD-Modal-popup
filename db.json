@@ -1,0 +1,12 @@
+{
+  "posts": [
+    {
+      "name": "Rahul Prasad",
+      "email": "rahul@yahoo.com",
+      "city": "Bihar",
+      "pincode": 675123,
+      "phonenumber": 9887671235,
+      "id": 1
+    }
+  ]
+}
