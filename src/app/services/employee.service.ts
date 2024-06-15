@@ -8,7 +8,7 @@ import { IDatamodel } from '../models/datamodel';
 export class EmployeeService {
   private http:HttpClient=inject(HttpClient);
 
-  readonly apiUrl="http://localhost:3000/posts/";
+ private readonly apiUrl="http://localhost:3000/posts/";
 
   constructor() { }
   

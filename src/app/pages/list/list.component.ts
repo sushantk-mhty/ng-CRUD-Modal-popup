@@ -23,7 +23,8 @@ export class ListComponent implements OnInit {
   isShowadd :boolean=true;
   recordId !:number;
 
-  @ViewChild('employeeFormModal') model: ElementRef | undefined;
+  // @ViewChild('employeeFormModal') model: ElementRef | undefined;
+  @ViewChild('employeeFormModal') modelRef ?: ElementRef<HTMLFormElement>;
   ngOnInit(): void {
     this.employeeform = this.formBuilder.group({
       name: ['', Validators.required],
@@ -34,14 +35,24 @@ export class ListComponent implements OnInit {
     });
     this.getAllEmployee();
   }
+  // openModel() {
+  //   if(this.model !=null)
+  //     this.model.nativeElement.style.display='block';
+  //     this.isShowadd=true;
+  // }
+  // closeModel(){
+  //   if(this.model !=null)
+  //   this.model.nativeElement.style.display='none';
+  // }
+
   openModel() {
-    if(this.model !=null)
-      this.model.nativeElement.style.display='block';
+    if(this.modelRef?.nativeElement)
+      this.modelRef.nativeElement.style.display='block';
       this.isShowadd=true;
   }
   closeModel(){
-    if(this.model !=null)
-    this.model.nativeElement.style.display='none';
+    if(this.modelRef?.nativeElement)
+    this.modelRef.nativeElement.style.display='none';
   }
   getAllEmployee() {
     this.employeeService.getAllEmployee().subscribe((res) => {
@@ -83,5 +94,8 @@ export class ListComponent implements OnInit {
       alert("Data Deleted successfully");
       this.getAllEmployee();
     })
+  }
+  refreshList(index:number,employee:IDatamodel):string{
+     return employee.name;
   }
 }
